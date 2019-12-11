@@ -106,7 +106,7 @@ class Graph:
         """
         # Create an empty queue and enqueue A PATH TO the starting vertex ID
         q = Queue()
-        q.enqueue( [starting_vertex] )
+        q.enqueue([starting_vertex])
         # Create an empty Set to store visited vertices
         visited = set()
         # While the queue is not empty...
@@ -139,7 +139,7 @@ class Graph:
         """
         # Create an empty queue and enqueue A PATH TO the starting vertex ID
         s = Stack()
-        s.push( [starting_vertex] )
+        s.push([starting_vertex])
         # Create an empty Set to store visited vertices
         visited = set()
         # While the queue is not empty...
