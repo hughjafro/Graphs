@@ -33,6 +33,7 @@ It could represent trade relationships between nations.
 And so on.
 
 ![Different ways to represent a graph](img/representations.PNG)
+The two most common ways to represent graphs in code are adjacency lists and adjacency matrices, each with its own strengths and weaknesses. When deciding on a graph implementation, it's important to understand the type of data and operations you will be using.
 
 ## Definitions
 
