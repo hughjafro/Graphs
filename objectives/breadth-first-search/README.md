@@ -78,6 +78,20 @@ BFS(graph, startVert):
     u.color = black
 ```
 
+# Create an empty queue and enqueue a PATH to the starting vertex ID
+# Creat a Set to store visisted vertices
+# While the queue is not emtpy...
+  # De-queue the first PATH
+  # Grab the last vertex from the PATH
+  # If that vertex has not been visited...
+    # Check if it's the target
+      # If so, retrun path
+    # Mark it as visited...
+    # Then add a path to its neighbors to the back of the queue
+      # Copy the path
+      # Append the neighbor to the back
+
+
 ## Exercises
 
 * Build a random graph and show a vertex visitation order for BFS.
