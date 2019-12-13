@@ -100,5 +100,6 @@ def find_ladders(begin_word, end_word):
                 path_copy.append(neighbor)
                 q.enqueue(path_copy)
 
+
 # print(get_neighbors("sail"))
 print(find_ladders("happy", "funny"))
