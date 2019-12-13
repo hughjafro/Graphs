@@ -149,10 +149,10 @@ def dft_graph(player, visited, traversalPath):
 
 def bfs(player, visited, traversalPath):
     # Create an empty queue and enqueue A PATH TO the starting vertex ID
-    queue = Queue()
-    queue.enqueue([player.currentRoom.id])  # starting_vertex
+    q = Queue()
+    q.enqueue([player.currentRoom.id])  # starting_vertex
     # Create an empty Set to store visited vertices
-    visited_room_ids = set()
+    visited_room_id = set()
     # path_copy = None
 
     # # While the queue is not empty...
@@ -181,13 +181,13 @@ def bfs(player, visited, traversalPath):
     #     return False
     search_path = None
 
-    while queue.size() > 0:
-        path = queue.dequeue()
-        roomid = path[-1]
+    while q.size() > 0:
+        path = q.dequeue()
+        room_id = path[-1]
 
         # If current room contains an untraversed path
         # Return path and break
-        room_directions = visited[roomid]
+        room_directions = visited[room_id]
         for direction, value in room_directions.items():
             if value == '?':
                 search_path = path
@@ -196,36 +196,36 @@ def bfs(player, visited, traversalPath):
         if search_path:
             break
 
-        if roomid not in visited_room_ids:
-            visited_room_ids.add(roomid)
+        if room_id not in visited_room_id:
+            visited_room_id.add(room_id)
 
-            # Find neighbouring roomids and add it to path
-            room_directions = visited[roomid]
-            for direction, next_roomid in room_directions.items():
-                next_path = path.copy()
-                next_path.append(next_roomid)
-                queue.enqueue(next_path)
+            # Find neighbour room_ids and add it to path
+            room_directions = visited[room_id]
+            for direction, next_room_id in room_directions.items():
+                path_copy = path.copy()
+                path_copy.append(next_room_id)
+                q.enqueue(path_copy)
 
-    # Could not find room with untraversed path/direction
+    # No room found with untraversed path
     if not search_path:
         return False
 
-    for index, roomid in enumerate(search_path[:-1]):
-        # Find next room in visited and get directions to reach next room
-        directions = visited[roomid]
+    for index, room_id in enumerate(search_path[:-1]):
+        # Find next room in visited and get directions to next_room
+        directions = visited[room_id]
         for direction in directions:
-            if visited[roomid][direction] == search_path[index+1]:
+            if visited[room_id][direction] == search_path[index+1]:
                 traversalPath.append(direction)
                 player.travel(direction)
     return True
 
 for i in range(1):
-    player = Player("Name", world.startingRoom)
-
-    traversalPath = []
 
     visited = {}
 
+    # Find a random available direction and move in that direction
+    # Keep going using DFT
+    # When there are no more  then use bfs to find nearest node with ?
     while True:
         dft_graph(player, visited, traversalPath)
 
